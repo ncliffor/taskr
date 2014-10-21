@@ -5,8 +5,26 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <!-- <style> -->
+  <!--     body { -->
+  <!--     background&#45;image: url("http://i.imgur.com/atz81.jpg"); -->
+  <!--     background&#45;repeat: no&#45;repeat; -->
+  <!--     background&#45;attachment: fixed; -->
+  <!--     background&#45;position:50% 50%; -->
+  <!--     background&#45;size: 100% 100%; -->
+  <!--   } -->
+  <!-- </style> -->
+
 </head>
 <body>
+  <% if signed_in? %>
+    <p>Currently signed in as <%= current_user.email %></p>
+    <%= link_to "Sign out", session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign in", new_session_path %>
+    <%= link_to "Sign up", new_user_path %>
+  <% end %>
 
 <%= yield %>
 
