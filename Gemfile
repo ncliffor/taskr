@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'monban-generators'
+gem 'pry'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
