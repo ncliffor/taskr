@@ -2,7 +2,12 @@
 
 <h2>Here are your tasks</h2>
 
+
+<%= render "error_messages", target: @task %>
+
+
 <%= form_for @task do |form| %>
+
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -16,6 +21,14 @@
   <%= form.submit %>
 <% end %>
 
+
+
+<p>To Do</p>
 <ul>
-  <%= render @tasks %>
+  <%= render @tasks.where(completed: false) %>
+</ul>
+
+<p>Finished</p>
+<ul>
+  <%= render @tasks.where(completed: true) %>
 </ul>
