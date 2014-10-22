@@ -10,10 +10,15 @@ $(function() {
       data: taskData
     });
     $(this).parents("li").fadeOut();
-    $("#complete-task-list") function() {
-      $(this).parents("li").fadeIn();
-    };
+      conversation.done(onComplete);
     return false;
+  };
+
+  var onComplete = function(html) {
+    var completedList = $("#complete-task-list");
+    var completedItem = $(html).hide();
+    completedList.prepend(completedItem);
+    completedItem.fadeIn();
   };
 
   $("body").on("submit", "form.edit_task", updateTaskDataFromServer);

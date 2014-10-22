@@ -31,7 +31,7 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.update(task_params)
 
-    redirect_to tasks_path
+    render task
   end
 
   private
