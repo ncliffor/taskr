@@ -23,11 +23,11 @@
 
 
 <p>To Do</p>
-<ul>
-  <%= render @tasks.where(completed: false) %>
+<ul id="incomplete-task-list">
+  <%= render @incomplete_tasks %>
 </ul>
 
-<!-- <p>Finished</p> -->
-<!-- <ul> -->
-<!--   <%= render @tasks.where(completed: true) %> -->
-<!-- </ul> -->
+<p>Finished</p>
+<ul id="complete-task-list">
+  <%= render @complete_tasks %>
+</ul>
