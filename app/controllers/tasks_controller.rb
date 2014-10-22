@@ -14,8 +14,17 @@ class TasksController < ApplicationController
     if @task.save
       render @task
     else
-      render :index
+      render partial: "error_messages",
+        locals: { target: @task },
+        status: 422
     end
+  end
+
+  def destroy
+    task = current_user.tasks.find(params[:id])
+    task.destroy
+
+    render nothing: true
   end
 
   def update

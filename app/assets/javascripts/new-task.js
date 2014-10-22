@@ -9,7 +9,13 @@ $(function() {
       data: taskData
     });
     conversation.done(addTaskToList);
+    conversation.fail(onFailure);
     return false;
+  };
+
+  var onFailure = function(ajaxObject){
+    var html = ajaxObject.responseText;
+    $("#errors").html(html);
   };
 
   var resetForm = function() {
@@ -17,10 +23,14 @@ $(function() {
     newTaskForm.find("#task_title").focus();
   };
 
-  newTaskForm.submit(postTaskDataToServer);
+  $("body").on("submit", "form#new_task", postTaskDataToServer);
+
+//  newTaskForm.submit(postTaskDataToServer);
 
   var addTaskToList = function(task) {
     var taskList = $("#incomplete-task-list");
     taskList.prepend(task);
+    resetForm();
+    $("#errors").html("");
   };
 });
